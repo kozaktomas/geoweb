@@ -1,17 +1,17 @@
 {
-	"name": "nette/sandbox",
-	"description": "The sandbox is a pre-packaged Nette Framework project, basic configured structure for your application.",
-	"homepage": "http://nette.org",
+	"name": "Jedno a dem - webapp",
+	"description": "",
+	"homepage": "http://jednoadem.cz/",
 	"type": "project",
 	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
 	"authors": [
 		{
-			"name": "David Grudl",
-			"homepage": "http://davidgrudl.com"
+			"name": "Tomáš Kozák",
+			"homepage": "http://kozak.in/"
 		},
 		{
-			"name": "Nette Community",
-			"homepage": "http://nette.org/contributors"
+			"name": "Martin Chodúr",
+			"homepage": ""
 		}
 	],
 	"require": {
