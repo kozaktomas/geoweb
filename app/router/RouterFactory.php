@@ -3,9 +3,9 @@
 namespace App;
 
 use Nette,
-	Nette\Application\Routers\RouteList,
-	Nette\Application\Routers\Route,
-	Nette\Application\Routers\SimpleRouter;
+    Nette\Application\Routers\RouteList,
+    Nette\Application\Routers\Route,
+    Nette\Application\Routers\SimpleRouter;
 
 
 /**
@@ -14,14 +14,15 @@ use Nette,
 class RouterFactory
 {
 
-	/**
-	 * @return \Nette\Application\IRouter
-	 */
-	public function createRouter()
-	{
-		$router = new RouteList();
-		$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
-		return $router;
-	}
+    /**
+     * @return \Nette\Application\IRouter
+     */
+    public function createRouter()
+    {
+        $router = new RouteList();
+        $router[] = new SimpleRouter("Homepage:default");
+        //$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
+        return $router;
+    }
 
 }
