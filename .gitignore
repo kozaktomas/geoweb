@@ -3,3 +3,4 @@ log/
 temp/
 app/config/config.neon
 app/config/config.local.neon
+.idea/
