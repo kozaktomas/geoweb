@@ -1,28 +1,48 @@
 <html>
 <head>
     <title>OpenLayers Example</title>
-    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 </head>
+
 <body>
-<div style="width:100%; height:100%" id="map"></div>
-<script defer="defer" type="text/javascript">
-    var map = new OpenLayers.Map('map');
-    var wms = new OpenLayers.Layer.WMS("OpenLayers WMS",
-            "http://vmap0.tiles.osgeo.org/wms/vmap0", { layers: 'basic'});
-    var dm_wms = new OpenLayers.Layer.WMS(
-            "Canadian Data",
-            "http://www2.dmsolutions.ca/cgi-bin/mswms_gmap",
-            {
-                layers: "bathymetry,land_fn,park,drain_fn,drainage," +
-                        "prov_bound,fedlimit,rail,road,popplace",
-                transparent: "true",
-                format: "image/png"
-            },
-            { isBaseLayer: false}
-    );
-    map.addLayers([wms, dm_wms]);
-    map.zoomToMaxExtent();
+
+<div style="width:100%; height:50%" id="map"></div>
+
+<div>{control xmlForm}</div>
+
+<script defer="defer" type="text/javascript" n:syntax="off">
+    var map = L.map('map').setView([49.396599287069, 16.710938821824893], 18);
+
+    L.tileLayer('http://{s}.tiles.mapbox.com/v3/sarasafavi.hjegnofh/{z}/{x}/{y}.png', {
+        attribution: 'Map data',
+        maxZoom: 18
+    }).addTo(map);
+
 </script>
 
+
+<script>
+
+    var pointList = new Array();
+    {if isset($reader)}
+    {foreach $reader as $point}
+    {if $point instanceof  Jednoadem\Communications\Point}
+    pointList.push(new L.LatLng({$point->getLatitude()}, {$point->getLongitude()}));
+    {/if}
+    {/foreach}
+    var firstpolyline = new L.Polyline(pointList, {
+        color: 'red',
+        weight: 3,
+        opacity: 0.5,
+        smoothFactor: 1
+
+    });
+    firstpolyline.addTo(map);
+
+    {/if}
+
+</script>
 </body>
 </html>

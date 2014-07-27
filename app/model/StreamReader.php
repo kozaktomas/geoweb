@@ -83,13 +83,13 @@ class StreamReader extends Object implements ArrayAccess, Countable, Iterator
 
     public function key()
     {
-        return $this->current();
+        return $this->current;
     }
 
 
     public function valid()
     {
-        $res = ($this->current !== NULL && $this->current !== FALSE);
+        $res = ($this->current !== NULL && $this->current !== FALSE && ($this->key() - 1 <= $this->count()));
         return $res;
     }
 
